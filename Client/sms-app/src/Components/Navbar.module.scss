@@ -1,0 +1,58 @@
+.Container {
+  width: 100%;
+  border-bottom: 1px solid #dddee6;
+
+  & .NavContainer {
+    height: 4rem;
+    width: 96%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .NavLogo {
+      background: #308dfd;
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      color: white;
+      border-radius: 0.5rem;
+
+      &span:nth-child(2) {
+        font-weight: 600;
+      }
+
+      & span:nth-child(3) {
+        font-weight: 700;
+      }
+    }
+
+    & .NavInfo {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      justify-content: space-around;
+
+      & .Notification{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      & .Avatar {
+        background: #dddee6;
+        padding: 0.5rem;
+        width: 1.2rem;
+        height:1.2rem;
+        font-size: 1rem;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+      }
+    }
+  }
+}

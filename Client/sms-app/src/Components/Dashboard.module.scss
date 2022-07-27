@@ -1,0 +1,28 @@
+.Container{
+    display:grid;
+    grid-template-columns: 1fr 4fr;
+    height:calc(100vh - 4rem);
+
+    & .SideNav{
+       border-right: 1px solid #dddee6; 
+       display:flex;
+       flex-direction: column;
+       align-items: flex-start;
+       gap:2rem;
+       padding:2rem 0 0 2rem;
+
+       & .SideNav_Item{
+            color: #7E889A;
+            display:flex;
+            align-items: center;
+            gap:0.5rem;
+            font-size: 1rem;
+
+            & div:nth-child(1){
+                display:flex;
+                align-items: center;
+                justify-content: center;
+            }
+       }
+    }
+}
