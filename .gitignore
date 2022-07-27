@@ -1,0 +1,23 @@
+/Client/sms-app/node_modules
+
+/Client/sms-app/.pnp
+/Client/sms-app/.pnp.js
+
+# testing
+/Client/sms-app/coverage
+
+# production
+/Client/sms-app/build
+
+# misc
+/Client/sms-app/.DS_Store
+/Client/sms-app/.env.local
+/Client/sms-app/.env.development.local
+/Client/sms-app/.env.test.local
+/Client/sms-app/.env.production.local
+
+/Client/sms-app/npm-debug.log*
+/Client/sms-app/yarn-debug.log*
+/Client/sms-app/yarn-error.log*
+
+/Server/node_modules
