@@ -8,7 +8,10 @@ const Assignments = () => {
   const [assign, setAssign] = useState([]);
 
   const getAssignments = async() => {
-    await axios.get("http://localhost:8080/api/assignments/all").then((res) => console.log(res)).catch((err) => console.log(err));
+    await axios
+      .get("http://localhost:8080/api/studentass/62e2691266511978e1568179")
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
