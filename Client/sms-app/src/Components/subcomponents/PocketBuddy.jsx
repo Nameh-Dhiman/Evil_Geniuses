@@ -3,15 +3,43 @@ import styles from "./PocketBuddy.module.scss";
 // import axios from "axios";
 // import { useEffect } from "react";
 import { useState } from "react";
+import axios from "axios";
 
 const PocketBuddy = () => {
   const [editBudget, setEditBudget] = useState(false);
+  const [bank, setBank] = useState(false);
+  const [paytm, setPaytm] = useState(false);
 
-  const changeBudget = async() => {
-    alert("Budget Updated!");
-  };
+  // const changeBudget = async () => {
+  //   alert("Budget Updated!");
+  //   await axios
+  //     .post("http://localhost:8080/api/money/budget", {user_id, budget})
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // };
 
-  const reminderHandler = async() => {
+  // const dailyExp = async () => {
+  //   await axios.post("http://localhost:8080/api/money/reduce", {user_id, value:expenditure}).then((res) => console.log(res)).catch((err) => console.log(err));
+  // };;
+
+  // const reminder = async () => {
+  //   await axios
+  //     .post("http://localhost:8080/api/money/reminder", {
+  //       user_id,
+  //       reminder,
+  //     })
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // };
+
+  //const setPerDay = async() => {
+    //   await axios
+    //     .get("http://localhost:8080/api/money/62e2692966511978e156817c")
+    //     .then((res) => console.log(res))
+    //     .catch((err) => console.log(err));
+  //};
+
+  const reminderHandler = async () => {
     alert("Reminder has been set");
   };
 
@@ -43,7 +71,7 @@ const PocketBuddy = () => {
             </div>
             <button
               onClick={() => {
-                changeBudget();
+                // changeBudget();
                 setEditBudget(false);
               }}
               className={styles.Buttons}
@@ -98,36 +126,60 @@ const PocketBuddy = () => {
           </select>
         </div>
         <div className={styles.DisperseAmount}>
-          <p className={styles.PageTitle} style={{ fontSize: "1rem" }}>
-            Bank Details
-          </p>
-          <div className={styles.InputContainer}>
-            <input
-              placeholder="Enter your Bank Name..."
-              className={styles.ContainerInput}
-              name="bankname"
-            />
-            <label className={styles.ContainerLabel}>Bank Name</label>
+          <div>
+            <button onClick={() => {setBank(true); setPaytm(false);}}>Add Money to the Bank</button>
+            <button onClick={() => {setPaytm(true); setBank(false);}}>Add Money to Paytm</button>
           </div>
-          <div className={styles.InputContainer}>
-            <input
-              placeholder="Enter your Account Number..."
-              className={styles.ContainerInput}
-              name="accountnumber"
-            />
-            <label className={styles.ContainerLabel}>Account Number</label>
-          </div>
-          <div className={styles.InputContainer}>
-            <input
-              placeholder="Enter your IFSC Code..."
-              className={styles.ContainerInput}
-              name="ifsc"
-            />
-            <label className={styles.ContainerLabel}>IFSC</label>
-          </div>
+          {bank ? (
+            <>
+              <p className={styles.PageTitle} style={{ fontSize: "1rem" }}>
+                Bank Details
+              </p>
+              <div className={styles.InputContainer}>
+                <input
+                  placeholder="Enter your Bank Name..."
+                  className={styles.ContainerInput}
+                  name="bankname"
+                />
+                <label className={styles.ContainerLabel}>Bank Name</label>
+              </div>
+              <div className={styles.InputContainer}>
+                <input
+                  placeholder="Enter your Account Number..."
+                  className={styles.ContainerInput}
+                  name="accountnumber"
+                />
+                <label className={styles.ContainerLabel}>Account Number</label>
+              </div>
+              <div className={styles.InputContainer}>
+                <input
+                  placeholder="Enter your IFSC Code..."
+                  className={styles.ContainerInput}
+                  name="ifsc"
+                />
+                <label className={styles.ContainerLabel}>IFSC</label>
+              </div>
+            </>
+          ) : paytm ? (
+            <>
+              <p className={styles.PageTitle} style={{ fontSize: "1rem" }}>
+                Paytm Number
+              </p>
+              <div className={styles.InputContainer}>
+                <input
+                  placeholder="Enter your Paytm Number..."
+                  className={styles.ContainerInput}
+                  name="paytm"
+                />
+                <label className={styles.ContainerLabel}>Mobile</label>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
         <div className={styles.GetLoan}>
-          
+          <input type="submit" value="Disperse Amount" />
         </div>
       </div>
     </div>
