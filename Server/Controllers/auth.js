@@ -14,6 +14,7 @@ const signup = async (req, res) => {
     }
     return res.send("User Already Exists");
   } catch (err) {
+    if(err) console.log(err);
     return res.sendStatus(404);
   }
 };
@@ -25,7 +26,7 @@ const signin = async (req, res) => {
     });
 
     if (isExist && (await isExist.matchPassword(req.body.password))) {
-      return res.send("User Exists");
+      return res.json(isExist);
     }
     return res.sendStatus(404);
   } catch (err) {

@@ -22,7 +22,7 @@ app.use("/api/studentass", studentAss);
 app.use("/api/grades", gradeRouter);
 
 app.get("/", (req, res) => {
-  return res.send("hello world!");
+  return res.send("Excelligent Backend!");
 });
 
 const PORT = process.env.PORT || 8080;

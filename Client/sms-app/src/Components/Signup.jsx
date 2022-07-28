@@ -65,14 +65,14 @@ const Signup = () => {
             <input
               type="radio"
               name="role"
-              value="Student"
+              value="student"
               onChange={changeHandler}
             />
             <label>Student</label>
             <input
               type="radio"
               name="role"
-              value="Instructor"
+              value="instructor"
               onChange={changeHandler}
             />
             <label>Instructor</label>

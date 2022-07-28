@@ -1,22 +1,64 @@
-import React from 'react';
-import { useState } from 'react';
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import styles from "./Dashboard.module.scss";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
 
   const [active, setActive] = useState({
-    grades:false,
-    assignments:false,
-    pocketBuddy:false,
-    talkToExpert:false,
+    grades: false,
+    assignments: false,
+    pocketbuddy: false,
+    talkToExpert: false,
   });
+
+  useEffect(() => {
+    let curLocation = window.location.pathname;
+    if( curLocation === '/dashboard/grades'){
+      setActive({
+        ...active, 
+        grades: true
+      });
+    }else if(curLocation === '/dashboard/assignments'){
+      setActive({
+        ...active,
+        assignments: true,
+      });
+    }
+    else if(curLocation === '/dashboard/pocketbuddy'){
+      setActive({
+        ...active,
+        pocketbuddy: true,
+      });
+    }
+    else if(curLocation === '/dashboard/talkToExpert'){
+      setActive({
+        ...active,
+        talkToExpert: true,
+      });
+    }
+  }, []);
 
   return (
     <div className={styles.Container}>
       <div className={styles.SideNav}>
         <div
-          className={styles.SideNav_Item}
-          onClick={() => setActive({ ...active, grades: true })}
+          className={
+            !active.grades
+              ? `${styles.SideNav_Item}`
+              : `${styles.SideNav_Item} ${styles.SideNavItemActive}`
+          }
+          onClick={() => {
+            navigate("/dashboard/grades");
+            setActive({
+              grades: true,
+              assignments: false,
+              pocketbuddy: false,
+              talkToExpert: false,
+            });
+          }}
         >
           <div>
             <svg
@@ -34,8 +76,20 @@ const Dashboard = () => {
           <div>Grades</div>
         </div>
         <div
-          className={styles.SideNav_Item}
-          onClick={() => setActive({ ...active, assignments: true })}
+          className={
+            !active.assignments
+              ? `${styles.SideNav_Item}`
+              : `${styles.SideNav_Item} ${styles.SideNavItemActive}`
+          }
+          onClick={() => {
+            setActive({
+              grades: false,
+              assignments: true,
+              pocketbuddy: false,
+              talkToExpert: false,
+            });
+            navigate("/dashboard/assignments");
+          }}
         >
           <div>
             <svg
@@ -57,8 +111,20 @@ const Dashboard = () => {
           <div>Assignments</div>
         </div>
         <div
-          className={styles.SideNav_Item}
-          onClick={() => setActive({ ...active, pocketBuddy: true })}
+          className={
+            !active.pocketbuddy
+              ? `${styles.SideNav_Item}`
+              : `${styles.SideNav_Item} ${styles.SideNavItemActive}`
+          }
+          onClick={() => {
+            setActive({
+              grades: false,
+              assignments: false,
+              pocketbuddy: true,
+              talkToExpert: false,
+            });
+            navigate("/dashboard/pocketbuddy");
+          }}
         >
           <div>
             <svg
@@ -78,11 +144,23 @@ const Dashboard = () => {
               <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z" />
             </svg>
           </div>
-          <div>PocketBuddy</div>
+          <div>Pocketbuddy</div>
         </div>
         <div
-          className={styles.SideNav_Item}
-          onClick={() => setActive({ ...active, talktoExpert: true })}
+          className={
+            !active.talkToExpert
+              ? `${styles.SideNav_Item}`
+              : `${styles.SideNav_Item} ${styles.SideNavItemActive}`
+          }
+          onClick={() => {
+            setActive({
+              grades: false,
+              assignments: false,
+              pocketbuddy: false,
+              talkToExpert: true,
+            });
+            navigate("/dashboard/talkToExpert");
+          }}
         >
           <div>
             <svg
@@ -100,9 +178,11 @@ const Dashboard = () => {
           <div>Talk to Expert</div>
         </div>
       </div>
-      <div className={styles.Display}></div>
+      <div className={styles.Display}>
+        <Outlet />
+      </div>
     </div>
   );
-}
+};
 
-export default Dashboard
+export default Dashboard;
