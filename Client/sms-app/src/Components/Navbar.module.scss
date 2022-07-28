@@ -1,6 +1,6 @@
 .Container {
   width: 100%;
-  border-bottom: 1px solid #dddee6;
+  border-bottom: 2px solid #dddee6;
 
   & .NavContainer {
     height: 4rem;
@@ -16,6 +16,7 @@
       font-size: 1.2rem;
       color: white;
       border-radius: 0.5rem;
+      cursor:pointer;
 
       &span:nth-child(2) {
         font-weight: 600;
@@ -41,8 +42,8 @@
       & .Avatar {
         background: #dddee6;
         padding: 0.5rem;
-        width: 1.2rem;
-        height:1.2rem;
+        width: 2rem;
+        height:2rem;
         font-size: 1rem;
         display:flex;
         align-items: center;

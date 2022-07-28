@@ -1,28 +1,42 @@
-.Container{
-    display:grid;
-    grid-template-columns: 1fr 4fr;
-    height:calc(100vh - 4rem);
+.Container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  height: calc(100vh - 4rem);
 
-    & .SideNav{
-       border-right: 1px solid #dddee6; 
-       display:flex;
-       flex-direction: column;
-       align-items: flex-start;
-       gap:2rem;
-       padding:2rem 0 0 2rem;
+  & .SideNav {
+    border-right: 2px solid #dddee6;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem 0;
 
-       & .SideNav_Item{
-            color: #7E889A;
-            display:flex;
-            align-items: center;
-            gap:0.5rem;
-            font-size: 1rem;
+    & .SideNav_Item {
+      color: #7e889a;
+      display: flex;
+      padding: 0.5rem 2rem;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      font-size: 1rem;
+      cursor: pointer;
 
-            & div:nth-child(1){
-                display:flex;
-                align-items: center;
-                justify-content: center;
-            }
-       }
+      &:hover,
+      &:active {
+        color: black;
+        background: #dddee6;
+      }
+
+      & div:nth-child(1) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
+
+    & .SideNavItemActive {
+      color: black;
+      background: #dddee6;
+    }
+  }
 }
