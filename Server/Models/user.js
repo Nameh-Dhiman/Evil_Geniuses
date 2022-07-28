@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const assignmentModel = require("./assignment");
 
 const userSchema = new Schema(
   {
@@ -13,14 +12,12 @@ const userSchema = new Schema(
       required: true,
       enum: ["student", "instructor", "admin"],
     },
-    assignments: [
-      { type: Schema.Types.ObjectId, required: false, ref: assignmentModel },
-    ],
   },
   {
     timestamps: true,
   }
 );
+
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
