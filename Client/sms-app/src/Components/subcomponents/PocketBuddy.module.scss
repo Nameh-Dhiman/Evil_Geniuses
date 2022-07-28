@@ -1,0 +1,112 @@
+.Container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: scroll;
+  height: 90vh;
+
+  & .PageTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: #9d9d9e;
+  }
+
+  & .PersonalBudget,
+  & .Loan {
+    width: 90%;
+    margin: 0 auto 2rem;
+    border: 1px solid #9d9d9e;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & .Buttons {
+      padding: 0.25rem 1rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      color: white;
+      background: #308dfd;
+      outline: none;
+      display: block;
+      border: none;
+      -webkit-border-radius: 0.5rem;
+      -moz-border-radius: 0.5rem;
+      -ms-border-radius: 0.5rem;
+      -o-border-radius: 0.5rem;
+    }
+
+    & .InputContainer {
+      position: relative;
+
+      & .ContainerInput {
+        font-size: 1rem;
+        width: 100%;
+        padding: 0.65rem;
+        outline: none;
+        border: 2px solid #dddee6;
+        border-radius: 0.5rem;
+        -webkit-border-radius: 0.5rem;
+        -moz-border-radius: 0.5rem;
+        -ms-border-radius: 0.5rem;
+        -o-border-radius: 0.5rem;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      & .ContainerInput:focus {
+        border: 2px solid #308dfd;
+      }
+
+      & .ContainerInput:not(:placeholder-shown) + .ContainerLabel {
+        background: #fff;
+        transform: translate(0, -50%);
+        display: block;
+      }
+
+      & .ContainerLabel {
+        color: #308dfd;
+        left: 8px;
+        padding: 0 0.5rem;
+        position: absolute;
+        top: 0;
+        display: none;
+        transition: all 200ms;
+      }
+    }
+
+    & .Reminder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      & input[type="time"] {
+        font-size: 1rem;
+        outline: none;
+        color: #9d9d9e;
+        border: 2px solid #dddee6;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+      }
+
+      & input[type="time"]:focus {
+        color: black;
+        border: 2px solid #308dfd;
+      }
+    }
+  }
+
+  & .DisperseAmount{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+  }
+}

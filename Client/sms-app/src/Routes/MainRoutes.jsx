@@ -18,7 +18,7 @@ const MainRoutes = () => {
         <Route path="/dashboard/*" element={<Dashboard />}>
           <Route path="grades" element={<Grades /> }></Route>
           <Route path="assignments" element={<Assignments />}></Route>
-          <Route path="pocketBuddy" element={<PocketBuddy />}></Route>
+          <Route path="pocketbuddy" element={<PocketBuddy />}></Route>
         </Route>
       </Routes>
     </>
