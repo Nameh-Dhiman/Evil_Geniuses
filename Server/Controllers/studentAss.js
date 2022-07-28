@@ -1,4 +1,5 @@
 const studentAssModel = require("../Models/studentAss");
+const assignmentModel = require("../Models/assignment");
 
 const assignmentPatcher = async (req, res) => {
   const { user_id, assignment_id, isCompleted } = req.body;
@@ -33,9 +34,15 @@ const assignmentPatcher = async (req, res) => {
 const assignmentGetter = async (req, res) => {
   const { user_id } = req.params;
   try {
-    const assignments = await studentAssModel.find({ student_id: user_id });
+    const assignments = await studentAssModel
+      .find({ student_id: user_id })
+      .populate({
+        path: "assignment_id",
+        model: assignmentModel,
+      });
     return res.send(assignments);
   } catch (err) {
+    console.log("err:", err);
     return res.sendStatus(404);
   }
 };

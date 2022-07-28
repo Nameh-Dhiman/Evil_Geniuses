@@ -12,6 +12,7 @@ const userSchema = new Schema(
       required: true,
       enum: ["student", "instructor", "admin"],
     },
+    unit: { type: Number, required: false },
   },
   {
     timestamps: true,
