@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import styles from "./Dashboard.module.scss";
 
 const Dashboard = () => {
@@ -100,7 +101,9 @@ const Dashboard = () => {
           <div>Talk to Expert</div>
         </div>
       </div>
-      <div className={styles.Display}></div>
+      <div className={styles.Display}>
+        <Outlet />
+      </div>
     </div>
   );
 }
