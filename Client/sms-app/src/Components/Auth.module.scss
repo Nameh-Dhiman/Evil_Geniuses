@@ -1,0 +1,80 @@
+.Container{
+    width:60%;
+    height:60vh;
+    margin: 5rem auto;
+    border:1px solid #dddee6;
+    border-radius:0.5rem;
+    -webkit-border-radius:0.5rem;
+    -moz-border-radius:0.5rem;
+    -ms-border-radius:0.5rem;
+    -o-border-radius:0.5rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content: center;
+
+    & .PageTitle{
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom:3rem;
+    }
+
+    & form{
+        width:50%;
+        display:flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-bottom:3rem;
+    }
+}
+
+
+.InputContainer {
+  position: relative;
+}
+
+.ContainerInput{
+    font-size: 1rem;
+    width:100%;
+    padding:0.65rem;
+    outline: none;
+    border:1px solid black;
+    border-radius:0.5rem;
+    -webkit-border-radius:0.5rem;
+    -moz-border-radius:0.5rem;
+    -ms-border-radius:0.5rem;
+    -o-border-radius:0.5rem;
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+.ContainerInput:focus{
+    border:2px solid #308DFD;
+}
+
+.Submit{
+    width:10rem;
+    margin:1rem auto;
+    padding:0.65rem;
+    color:white;
+    border:none;
+    background:#308DFD;
+    border-radius:0.5rem;
+}
+
+.ContainerInput:not(:placeholder-shown) + .ContainerLabel {
+  background: #fff;
+  transform: translate(0, -50%);
+  display: block;
+}
+
+.ContainerLabel {
+  color:#308DFD;
+  left: 8px;
+  padding:0 0.5rem;
+  position: absolute;
+  top: 0;
+  display: none;
+  transition: all 200ms;
+}
