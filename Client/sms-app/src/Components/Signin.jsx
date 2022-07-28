@@ -1,15 +1,20 @@
 import React, { useState, useRef } from "react";
 import styles from "./Auth.module.scss";
+import axios from 'axios';
 
 const Signin = () => {
 
   const [formData, setFormData] = useState({});
   const formReset = useRef();
 
+  const signin = async() => {
+    await axios.post("http://localhost:8080/api/auth/signin", formData).then((res) => console.log(res)).catch(err => console.log(err));
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
     formReset.current.reset();
-    console.log(formData);
+    signin();
   };
 
   const changeHandler = (e) => {

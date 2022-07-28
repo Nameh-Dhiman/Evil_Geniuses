@@ -1,15 +1,22 @@
 import React, { useState, useRef } from "react";
 import styles from "./Auth.module.scss";
+import axios from "axios";
 
 const Signup = () => {
-
   const [formData, setFormData] = useState({});
   const formReset = useRef();
+
+  const register = async () => {
+    await axios
+      .post("http://localhost:8080/api/auth/signup", formData)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
     formReset.current.reset();
-    console.log(formData);
+    register();
   };
 
   const changeHandler = (e) => {
@@ -20,28 +27,18 @@ const Signup = () => {
     });
   };
 
-
   return (
     <div className={styles.Container}>
       <p className={styles.PageTitle}>Signup</p>
       <form onSubmit={submitHandler} ref={formReset}>
         <div className={styles.InputContainer}>
           <input
-            placeholder="Enter your firstname.."
+            placeholder="Enter your name.."
             className={styles.ContainerInput}
-            name="firstname"
+            name="name"
             onChange={changeHandler}
           />
           <label className={styles.ContainerLabel}>Firstname</label>
-        </div>
-        <div className={styles.InputContainer}>
-          <input
-            placeholder="Enter your lastname.."
-            className={styles.ContainerInput}
-            name="lastname"
-            onChange={changeHandler}
-          />
-          <label className={styles.ContainerLabel}>Lastname</label>
         </div>
         <div className={styles.InputContainer}>
           <input
@@ -61,6 +58,25 @@ const Signup = () => {
             onChange={changeHandler}
           />
           <label className={styles.ContainerLabel}>Password</label>
+        </div>
+        <div className={styles.RadioContainer}>
+          <p>Role:</p>
+          <div>
+            <input
+              type="radio"
+              name="role"
+              value="Student"
+              onChange={changeHandler}
+            />
+            <label>Student</label>
+            <input
+              type="radio"
+              name="role"
+              value="Instructor"
+              onChange={changeHandler}
+            />
+            <label>Instructor</label>
+          </div>
         </div>
         <input type="submit" value="Register" className={styles.Submit} />
       </form>
