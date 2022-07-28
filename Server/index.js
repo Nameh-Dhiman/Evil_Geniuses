@@ -4,6 +4,7 @@ const authRouter = require("./Routes/auth.routes");
 const assignmentRouter = require("./Routes/assignment.routes");
 const studentAss = require("./Routes/studentAss.routes");
 const gradeRouter = require("./Routes/grades.routes");
+const moneyRouter = require("./Routes/money.routes");
 require("dotenv").config();
 const connection = require("./DB/db");
 
@@ -20,6 +21,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/assignments", assignmentRouter);
 app.use("/api/studentass", studentAss);
 app.use("/api/grades", gradeRouter);
+app.use("/api/money", moneyRouter);
 
 app.get("/", (req, res) => {
   return res.send("Excelligent Backend!");
@@ -30,7 +32,7 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, async () => {
   try {
     await connection;
-    console.log("connected to port " + PORT);
+    console.log("connected to port" + PORT);
   } catch (err) {
     console.log("something went wrong");
   }
