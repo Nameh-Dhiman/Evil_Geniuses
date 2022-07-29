@@ -6,8 +6,9 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   const [offlineUsers, setOfflineUsers] = useState([]);
   useEffect(() => {
     const getAllUsers = async () => {
-      let res = await fetch("http://localhost:8080/user/all");
+      let res = await fetch("http://localhost:8080/api/users/instructors");
       let data = await res.json();
+      console.log(data);
       let curr = onlineUsers.filter((user) => user.userId !== currentId);
 
       let currOnline = [];
@@ -56,7 +57,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
               />
               <div className="chatOnlineBadge"></div>
             </div>
-            <span className="chatOnlineName">{c.username}</span>
+            <span className="chatOnlineName">{c.name}</span>
           </div>
         );
       })}
@@ -77,7 +78,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
               />
               {/* <div className="chatOnlineBadge"></div> */}
             </div>
-            <span className="chatOnlineName">{c.username}</span>
+            <span className="chatOnlineName">{c.name}</span>
           </div>
         );
       })}

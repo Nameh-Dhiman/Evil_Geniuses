@@ -6,7 +6,7 @@ export default function Conversations({ conversation, currentUser }) {
   useEffect(() => {
     const friendId = conversation.members.find((m) => m !== currentUser._id);
     const getUser = async () => {
-      const res = await fetch(`http://localhost:8080/user/?userId=${friendId}`);
+      const res = await fetch(`http://localhost:8080/api/users/${friendId}`);
       const data = await res.json();
       setUser({ ...data });
     };
@@ -18,7 +18,7 @@ export default function Conversations({ conversation, currentUser }) {
         className="conversationImg"
         src="https://st.depositphotos.com/1779253/5140/v/450/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg"
       />
-      <span className="convsersationName">{user.username}</span>
+      <span className="convsersationName">{user.name}</span>
     </div>
   );
 }

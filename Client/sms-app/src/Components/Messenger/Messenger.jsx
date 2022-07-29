@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import ChatOnline from "../../components/ChatOnline/ChatOnline";
-import Conversations from "../../components/Conversations/Conversations";
-import Message from "../../components/Message/Message";
+import ChatOnline from "../ChatOnline/ChatOnline";
+import Conversations from "../Conversations/Conversations";
+import Message from "../Message/Message";
 import "./Messenger.css";
 import { io } from "socket.io-client";
 export default function Messenger() {
@@ -41,6 +41,7 @@ export default function Messenger() {
     const getConversations = async () => {
       const res = await fetch(`http://localhost:8080/conversation/${user._id}`);
       const data = await res.json();
+      console.log(data);
       setConversations([...data]);
     };
     getConversations();
