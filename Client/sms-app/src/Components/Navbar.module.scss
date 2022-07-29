@@ -16,7 +16,7 @@
       font-size: 1.2rem;
       color: white;
       border-radius: 0.5rem;
-      cursor:pointer;
+      cursor: pointer;
 
       &span:nth-child(2) {
         font-weight: 600;
@@ -33,26 +33,63 @@
       gap: 2rem;
       justify-content: space-around;
 
-      & .Notification{
-        display:flex;
+      & .Notification {
+        display: flex;
         align-items: center;
         justify-content: center;
+        cursor:pointer;
       }
 
-      & .Avatar {
-        background: #dddee6;
-        padding: 0.5rem;
-        width: 2rem;
-        height:2rem;
-        font-size: 1rem;
-        display:flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
+      & .Account {
+        position: relative;
+
+
+        & .HidePopUp{
+          display:none;
+        }
+
+        & .AccountPopUp{
+          cursor:pointer;
+          position:absolute;
+          background:white;
+          top:2.5rem;
+          right:7%;
+          font-size: 1rem;
+          width:10rem;
+          text-align: center;
+          border: 1px solid #9d9d9e;
+          border-radius: 0.5rem;
+
+          & p{
+            color:#757575;
+            margin: 0.25rem 0;
+            padding: 0.25rem 0.5rem;
+          }
+
+          & p:hover{
+            color:black;
+            background:#dddee6;
+          }
+        }
+
+        & .Avatar {
+          cursor:pointer;
+          background: #dddee6;
+          padding: 0.5rem;
+          width: 2rem;
+          height: 2rem;
+          text-transform: capitalize;
+          font-weight: 600;
+          font-size: 1.2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+        }
       }
     }
   }

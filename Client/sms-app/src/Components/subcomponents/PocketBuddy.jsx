@@ -14,8 +14,10 @@ const PocketBuddy = () => {
   const [paytm, setPaytm] = useState(false);
 
   const [budget, setBudget] = useState("");
+  const [curBudget, setCurBudget] = useState("");
   const [expenditure, setExpenditure] = useState("");
   const [perDay, setPerDay] = useState("");
+  const [balance, setBalance] = useState("");
   const [reminder, setReminder] = useState("");
   const [permitLoan, setPermitLoan] = useState(false);
 
@@ -62,7 +64,7 @@ const PocketBuddy = () => {
   const getPerDay = async() => {
       await axios
         .get(`http://localhost:8080/api/money/${curUser._id}`)
-        .then((res) => console.log(res))
+        .then((res) => {setPerDay(res.data.budgetPerDay); setBalance(res.data.balance); setCurBudget(res.data.budget);})
         .catch((err) => console.log(err));
   };
 
@@ -95,6 +97,7 @@ const PocketBuddy = () => {
         <p className={styles.PageTitle} style={{ fontSize: "1.2rem" }}>
           Manage your Expenses
         </p>
+        <div>Budget: ₹{curBudget} </div>
         {!editBudget ? (
           <div className={styles.EditBudget}>
             <button
@@ -141,11 +144,13 @@ const PocketBuddy = () => {
           </button>
         </div>
 
-        <div className={styles.RemBudget}>Rs. 3000</div>
-        <div className={styles.DailyBudget}>Rs. 100 per Day</div>
+        <div className={styles.RemBudget}>Balance: ₹{balance}</div>
+        <div className={styles.DailyBudget}>
+          You can spend, ₹{perDay} per Day
+        </div>
         <div className={styles.Reminder}>
           <label> Set Time for Reminder</label>
-          <input type="time" onChange={(e) => setReminder(e.target.value)}/>
+          <input type="time" onChange={(e) => setReminder(e.target.value)} />
           <button onClick={reminderHandler} className={styles.Buttons}>
             Set
           </button>
@@ -155,7 +160,7 @@ const PocketBuddy = () => {
         <p className={styles.PageTitle} style={{ fontSize: "1.2rem" }}>
           Get a loan from your PocketBuddy!
         </p>
-        <div className={styles.Total}>Amount to be Repayed: Rs. 500</div>
+        {/* <div className={styles.Total}>Amount to be Repayed: Rs. 500</div> */}
         <form onSubmit={submitHandler} ref={form}>
           <div className={styles.LoanOptions}>
             <div className={styles.LoanAmount}>
