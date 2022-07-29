@@ -97,15 +97,20 @@ const PocketBuddy = () => {
           </>
         )}
 
-        <div className={styles.InputContainer}>
-          <input
-            placeholder="Enter Today's Expenditure..."
-            className={styles.ContainerInput}
-            name="spent"
-          />
-          <label className={styles.ContainerLabel}>Today's Expenditure</label>
-          <button>Add Expense</button>
+        <div className={styles.Expenditure}>
+          <div className={styles.InputContainer}>
+            <input
+              placeholder="Enter Today's Expenditure..."
+              className={styles.ContainerInput}
+              name="spent"
+            />
+            <label className={styles.ContainerLabel}>Today's Expenditure</label>
+          </div>
+          <button onClick={() => alert("Added")} className={styles.Buttons}>
+            Add Expense
+          </button>
         </div>
+
         <div className={styles.RemBudget}>Rs. 3000</div>
         <div className={styles.DailyBudget}>Rs. 100 per Day</div>
         <div className={styles.Reminder}>
@@ -122,34 +127,38 @@ const PocketBuddy = () => {
         </p>
         <div className={styles.Total}>Amount to be Repayed: Rs. 500</div>
         <form onSubmit={submitHandler} ref={form}>
-          <div className={styles.LoanAmount}>
-            <select name="Amount" onChange={changeHandler}>
-              <option value="">Amount</option>
-              <option value="250">250</option>
-              <option value="500">500</option>
-              <option value="750">750</option>
-              <option value="1000">1000</option>
-              <option value="1500">1500</option>
-              <option value="2000">2000</option>
-            </select>
+          <div className={styles.LoanOptions}>
+            <div className={styles.LoanAmount}>
+              <select name="Amount" onChange={changeHandler}>
+                <option value="">Amount</option>
+                <option value="250">250</option>
+                <option value="500">500</option>
+                <option value="750">750</option>
+                <option value="1000">1000</option>
+                <option value="1500">1500</option>
+                <option value="2000">2000</option>
+              </select>
+            </div>
+            <div className={styles.RepayDuration}>
+              <select name="tenure" onChange={changeHandler}>
+                <option value="">Tenure</option>
+                <option value="1">1 Month</option>
+                <option value="3">3 Months</option>
+                <option value="6">6 Months</option>
+                <option value="9">9 Months</option>
+                <option value="12">12 Months</option>
+              </select>
+            </div>
           </div>
-          <div className={styles.RepayDuration}>
-            <select name="tenure" onChange={changeHandler}>
-              <option value="">Tenure</option>
-              <option value="1">1 Month</option>
-              <option value="3">3 Months</option>
-              <option value="6">6 Months</option>
-              <option value="9">9 Months</option>
-              <option value="12">12 Months</option>
-            </select>
-          </div>
-          <div className={styles.DisperseAmount}>
-            <div>
+
+          <div className={styles.DisperseOption}>
+            <div className={styles.DisperseOptionBtn}>
               <button
                 onClick={() => {
                   setBank(true);
                   setPaytm(false);
                 }}
+                className={styles.Buttons}
               >
                 Add Money to the Bank
               </button>
@@ -158,6 +167,7 @@ const PocketBuddy = () => {
                   setPaytm(true);
                   setBank(false);
                 }}
+                className={styles.Buttons}
               >
                 Add Money using UPI ID
               </button>
@@ -217,7 +227,11 @@ const PocketBuddy = () => {
             )}
           </div>
           <div className={styles.GetLoan}>
-            <input type="submit" value="Disburse Amount" />
+            <input
+              type="submit"
+              value="Disburse Amount"
+              className={styles.Buttons}
+            />
           </div>
         </form>
       </div>

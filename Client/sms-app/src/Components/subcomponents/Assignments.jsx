@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Assignments.module.scss";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { getDataFromLocal } from "../../Utils/Localstorage";
+import {AuthContext} from "../../Context/AuthContext";
 
 const Assignments = () => {
   const [assign, setAssign] = useState([]);
 
+  const {curUser} = useContext(AuthContext);
+  
+
   const getAssignments = async () => {
     await axios
-      .get(`http://localhost:8080/api/studentass/62e2691266511978e1568179`) // add userId
-      .then((res) => console.log(res))
+      .get(`http://localhost:8080/api/studentass/${curUser._id}`) // add userId
+      .then((res) => console.log([...res.data]))
       .catch((err) => console.log(err));
   };
 

@@ -25,6 +25,13 @@
     align-items: center;
     justify-content: center;
 
+    & .Expenditure{
+      display:flex;
+      flex-direction: column;
+      gap:1rem;
+      align-items: center;
+    }
+
     & .Buttons {
       padding: 0.25rem 1rem;
       font-size: 1rem;
@@ -103,10 +110,57 @@
     }
   }
 
-  & .DisperseAmount{
-    display:flex;
+  & .Loan {
+    & form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+      gap: 1rem;
+
+      & .LoanOptions {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        & select {
+          outline: none;
+          border: 2px solid #dddee6;
+          font-size: 1rem;
+          padding: 0.5rem;
+          width: 10rem;
+          color: #9d9d9e;
+          border-radius: 0.5rem;
+          -webkit-border-radius: 0.5rem;
+          -moz-border-radius: 0.5rem;
+          -ms-border-radius: 0.5rem;
+          -o-border-radius: 0.5rem;
+
+          &:hover,
+          &:focus {
+            border: 2px solid #308dfd;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+
+  & .DisperseOption {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    gap:1rem;
+    gap: 1rem;
+
+    & .DisperseOptionBtn {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  & .GetLoan{
+    margin-bottom:1rem;
   }
 }

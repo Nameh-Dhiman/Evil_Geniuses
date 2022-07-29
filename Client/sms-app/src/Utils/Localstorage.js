@@ -5,7 +5,7 @@ export const saveDataToLocal = (key, value) => {
 
 export const getDataFromLocal = (key) => {
     try{
-        let localData = localStorage.getItem(key) || undefined;
+        let localData = JSON.parse(localStorage.getItem(key)) || undefined;
         return localData;
     }catch(err){
         console.log(err);
