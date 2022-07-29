@@ -6,7 +6,7 @@ const loanSchema = new Schema({
   amount: { type: Number, required: true, default: 0 },
   duedate: { type: Date, required: true },
   bankname: { type: String, required: false },
-  banknumber: { type: Number, required: false },
+  accountnumber: { type: Number, required: false },
   ifsc: { type: String, required: false },
   upi_id: { type: String, required: false },
 });

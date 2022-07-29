@@ -4,7 +4,7 @@ const userModel = require("./user");
 
 const studentAssSchema = new Schema({
   student_id: { type: Schema.Types.ObjectId, required: true, ref: userModel },
-  assignment_id: {
+  assignment: {
     type: Schema.Types.ObjectId,
     required: true,
     ref: assignmentModel,

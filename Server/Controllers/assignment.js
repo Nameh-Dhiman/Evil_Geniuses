@@ -19,7 +19,7 @@ const postOne = async (req, res) => {
     for (let el of students) {
       const studentAss = new studentAssModel({
         student_id: el._id,
-        assignment_id: newAssignment._id,
+        assignment: newAssignment._id,
         isCompleted: false,
       });
       await studentAss.save();

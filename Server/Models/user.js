@@ -13,7 +13,11 @@ const userSchema = new Schema(
       enum: ["student", "instructor", "admin"],
     },
     title: { type: String, required: false },
-    unit: { type: Number, required: false },
+    unit: {
+      type: Number,
+      required: false,
+      default: Math.floor(Math.random() * (6 - 1 + 1)) + 1,
+    },
   },
   {
     timestamps: true,
