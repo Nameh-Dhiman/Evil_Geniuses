@@ -12,6 +12,7 @@ const userSchema = new Schema(
       required: true,
       enum: ["student", "instructor", "admin"],
     },
+    title: { type: String, required: false },
     unit: { type: Number, required: false },
   },
   {
