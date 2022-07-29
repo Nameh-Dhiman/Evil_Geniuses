@@ -14,7 +14,7 @@ const PocketBuddy = () => {
   const submitHandler  = (e) => {
     e.preventDefault();
     form.current.reset();
-    console.log("Hello!");
+    console.log(formData);
   };
 
   const changeHandler = (e) => {
@@ -153,7 +153,7 @@ const PocketBuddy = () => {
 
           <div className={styles.DisperseOption}>
             <div className={styles.DisperseOptionBtn}>
-              <button
+              <p
                 onClick={() => {
                   setBank(true);
                   setPaytm(false);
@@ -161,8 +161,8 @@ const PocketBuddy = () => {
                 className={styles.Buttons}
               >
                 Add Money to the Bank
-              </button>
-              <button
+              </p>
+              <p
                 onClick={() => {
                   setPaytm(true);
                   setBank(false);
@@ -170,7 +170,7 @@ const PocketBuddy = () => {
                 className={styles.Buttons}
               >
                 Add Money using UPI ID
-              </button>
+              </p>
             </div>
             {bank ? (
               <>

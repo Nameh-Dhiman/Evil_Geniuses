@@ -45,6 +45,7 @@ const assignmentGetter = async (req, res) => {
           model: userModel,
         },
       });
+      console.log(assignments);
     return res.send(assignments);
   } catch (err) {
     console.log("err:", err);
