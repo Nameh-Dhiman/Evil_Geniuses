@@ -3,9 +3,14 @@ import styles from "./Auth.module.scss";
 import axios from 'axios';
 import {AuthContext} from '../Context/AuthContext';
 import {saveDataToLocal} from '../Utils/Localstorage';
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
-  const {curUser, setCurUser, isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+  const {setCurUser} = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  // let location = useLocation();
+  // let from = location.state?.from?.pathname || "/";
   
   const [formData, setFormData] = useState({});
   const formReset = useRef();
@@ -16,6 +21,11 @@ const Signin = () => {
       setCurUser({...data});
       saveDataToLocal('user', data);
       saveDataToLocal('userId', data._id);
+      setTimeout(() => {
+        if(data.role === 'student') navigate('/dashboard');
+        else if(data.role === 'instructor') navigate('/instructordashboard');
+        // navigate(from, { replace: true });
+      }, 100);
     }).catch(err => console.log(err));
   }
 
