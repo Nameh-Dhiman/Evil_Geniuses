@@ -29,12 +29,17 @@ const gettingDataWithPerDay = async (req, res) => {
   const { user_id } = req.params;
   try {
     const user = await moneyModel.findOne({ student_id: user_id });
-    const perDay = Math.floor(user.budget / 30);
-    return res.send({ balance: user.balance, budgetPerDay: perDay });
+    const perDay = Math.floor(user.balance / user.day);
+    return res.send({
+      budget: user.budget,
+      balance: user.balance,
+      budgetPerDay: perDay,
+    });
   } catch (err) {
     return res.sendStatus(404);
   }
 };
+
 //change this balance key
 const minusFromBudget = async (req, res) => {
   const { user_id, value } = req.body;
@@ -46,7 +51,7 @@ const minusFromBudget = async (req, res) => {
     const updateBudget = await moneyModel.updateOne(
       { student_id: user_id },
       {
-        $set: { balance: isExist.balance - value },
+        $set: { balance: isExist.balance - value, day: isExist.day - 1 },
         $push: { history: { value: value, date: new Date() } },
       }
     );
@@ -116,4 +121,3 @@ module.exports = {
   minusFromBudget,
   settingRemainder,
 };
- 
