@@ -68,8 +68,8 @@ const PocketBuddy = () => {
 
   const checkLoan = async() => {
     let res =  await axios.get(`http://localhost:8080/api/loan/istaken/${curUser._id}`);
-    let data = res.data;
-    console.log(data);
+    let data = res.data.isTaken;
+    setPermitLoan(data);
   };
 
   useEffect(() => {
