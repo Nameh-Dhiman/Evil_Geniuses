@@ -8,6 +8,7 @@ const moneyRouter = require("./Routes/money.routes");
 require("dotenv").config();
 const connection = require("./DB/db");
 const userRouter = require("./Routes/user.routes");
+const loanRouter = require("./Routes/loan.routes");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -24,6 +25,7 @@ app.use("/api/studentass", studentAss);
 app.use("/api/grades", gradeRouter);
 app.use("/api/money", moneyRouter);
 app.use("/api/users", userRouter);
+app.use("/api/loan", loanRouter);
 
 app.get("/", (req, res) => {
   return res.send("Excelligent Backend!");
