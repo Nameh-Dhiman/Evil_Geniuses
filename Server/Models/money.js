@@ -6,6 +6,7 @@ const moneySchema = new Schema({
   budget: { type: Number, required: true },
   balance: { type: Number, required: false },
   remainder: { type: String, required: false },
+  day: { type: Number, default: 30, required: false },
   history: [{ type: { value: Number, date: Date }, required: false }],
 });
 
