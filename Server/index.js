@@ -9,6 +9,8 @@ require("dotenv").config();
 const connection = require("./DB/db");
 const userRouter = require("./Routes/user.routes");
 const loanRouter = require("./Routes/loan.routes");
+const conversationRoute = require("./Routes/conversations.routes");
+const messageRoute = require("./Routes/message.routes");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +20,8 @@ app.use(
     origin: "*",
   })
 );
-
+app.use("/messages", messageRoute);
+app.use("/conversation", conversationRoute);
 app.use("/api/auth", authRouter);
 app.use("/api/assignments", assignmentRouter);
 app.use("/api/studentass", studentAss);
