@@ -3,6 +3,7 @@ require("dotenv").config();
 const nodemailer = require("nodemailer");
 const hbs = require("handlebars");
 const userModel = require("../Models/user");
+const moneyModel = require("../Models/money");
 
 const transport = nodemailer.createTransport({
   service: "gmail",
@@ -52,7 +53,16 @@ const postingLoan = async (req, res) => {
           duedate: new Date(newLoan.duedate),
         }),
       })
-      .then((responce) => {
+      .then(async (responce) => {
+        const user = await moneyModel.findOne({
+          student_id: req.body.student_id,
+        });
+        if (user) {
+          await moneyModel.updateOne(
+            { student_id: req.body.student_id },
+            { $set: { balance: user.balance + Number(newLoan.amount) } }
+          );
+        }
         return res.send("User's Loan Approved!!!");
       });
   } catch (err) {
@@ -69,9 +79,9 @@ const isTakenLoan = async (req, res) => {
     });
 
     if (isExist) {
-      return res.send({ isTaken: true });
+      return res.send({ isTaken: true, loanAmount: isExist.amount });
     }
-    return res.send({ isTaken: false });
+    return res.send({ isTaken: false, loanAmount: 0 });
   } catch (err) {
     return res.sendStatus(404);
   }
