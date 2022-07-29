@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import styles from "./Auth.module.scss";
 import axios from 'axios';
+import {AuthContext} from '../Context/AuthContext';
 
 const Signin = () => {
-
+  const {curUser, setCurUser, isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
+  
   const [formData, setFormData] = useState({});
   const formReset = useRef();
 
