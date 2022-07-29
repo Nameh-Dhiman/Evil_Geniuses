@@ -129,7 +129,7 @@ const PocketBuddy = () => {
         <form onSubmit={submitHandler} ref={form}>
           <div className={styles.LoanOptions}>
             <div className={styles.LoanAmount}>
-              <select name="Amount" onChange={changeHandler}>
+              <select name="amount" onChange={changeHandler}>
                 <option value="">Amount</option>
                 <option value="250">250</option>
                 <option value="500">500</option>
@@ -140,7 +140,7 @@ const PocketBuddy = () => {
               </select>
             </div>
             <div className={styles.RepayDuration}>
-              <select name="tenure" onChange={changeHandler}>
+              <select name="duedate" onChange={changeHandler}>
                 <option value="">Tenure</option>
                 <option value="1">1 Month</option>
                 <option value="3">3 Months</option>

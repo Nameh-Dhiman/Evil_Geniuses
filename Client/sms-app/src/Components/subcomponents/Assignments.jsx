@@ -14,8 +14,8 @@ const Assignments = () => {
 
   const getAssignments = async () => {
     await axios
-      .get(`http://localhost:8080/api/studentass/${curUser._id}`) // add userId
-      .then((res) => console.log([...res.data]))
+      .get(`http://localhost:8080/api/studentass/${curUser._id}`)
+      .then((res) => setAssign([...res.data]))
       .catch((err) => console.log(err));
   };
 
@@ -37,18 +37,26 @@ const Assignments = () => {
         <div className={styles.Progress} style={{ width: "50%" }}></div>
       </div>
       <div className={styles.Assignments}>
-        <div className={styles.Assignment}>
-          <div className={styles.AssignmentInfo}>
-            <div className={styles.AssignmentTitle}>
-              Chat Application using Web Sockets Assignment
+        {assign.map((el) => (
+          <>
+            <div className={styles.Assignment} key={el._id}>
+              <div className={styles.AssignmentInfo}>
+                <div className={styles.AssignmentTitle}>
+                  {el.assignment.name}
+                </div>
+                <span className={styles.AssignmentTopic}>
+                  {el.assignment.topic}
+                </span>
+              </div>
+              <div className={styles.AssignmentInstructor}>
+                {el.assignment.instructor.name}
+              </div>
+              <div className={styles.AssignmentStatus}>
+                <input type="checkbox" checked={el.isCompleted}/>
+              </div>
             </div>
-            <span className={styles.AssignmentTopic}>Coding</span>
-          </div>
-          <div className={styles.AssignmentInstructor}>Prabhanjan</div>
-          <div className={styles.AssignmentStatus}>
-            <input type="checkbox" />
-          </div>
-        </div>
+          </>
+        ))}
       </div>
     </div>
   );
