@@ -2,19 +2,30 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import styles from "./PocketBuddy.module.scss";
+import {AuthContext}  from "../../Context/AuthContext";
+import { useContext } from "react";
 
 const PocketBuddy = () => {
+  const {curUser} = useContext(AuthContext);
+
+
   const [editBudget, setEditBudget] = useState(false);
   const [bank, setBank] = useState(false);
   const [paytm, setPaytm] = useState(false);
 
+  const [budget, setBudget] = useState("");
+  const [expenditure, setExpenditure] = useState("");
+  const [perDay, setPerDay] = useState("");
+  const [reminder, setReminder] = useState("");
+  const [permitLoan, setPermitLoan] = useState(false);
+
   const [formData, setFormData] = useState({});
   const form = useRef();
 
-  const submitHandler  = (e) => {
+  const submitHandler  = async(e) => {
     e.preventDefault();
+    await axios.post(`http://localhost:8080/api/loan/approve`, {student_id:curUser._id, ...formData}).then((res) => {console.log(res)}).catch((err) => console.log(err));
     form.current.reset();
-    console.log(formData);
   };
 
   const changeHandler = (e) => {
@@ -26,36 +37,54 @@ const PocketBuddy = () => {
   };
 
 
-  // const changeBudget = async () => {
-  //   alert("Budget Updated!");
-  //   await axios
-  //     .post("http://localhost:8080/api/money/budget", {user_id, budget})
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-  // };
+  const changeBudget = async () => {
+    alert("Budget Updated!");
+    await axios
+      .post("http://localhost:8080/api/money/budget", {user_id:curUser._id, budget:parseInt(budget)})
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
-  // const dailyExp = async () => {
-  //   await axios.post("http://localhost:8080/api/money/reduce", {user_id, value:expenditure}).then((res) => console.log(res)).catch((err) => console.log(err));
-  // };;
 
-  // const reminder = async () => {
-  //   await axios
-  //     .post("http://localhost:8080/api/money/reminder", {
-  //       user_id,
-  //       reminder,
-  //     })
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err));
-  // };
+  const dailyExp = async () => {
+    await axios
+      .post("http://localhost:8080/api/money/reduce", {
+        user_id: curUser._id,
+        value: parseInt(expenditure),
+      })
+      .then((res) => {
+        setExpenditure("");
+      })
+      .catch((err) => console.log(err));
+  };
 
-  //const setPerDay = async() => {
-    //   await axios
-    //     .get("http://localhost:8080/api/money/62e2692966511978e156817c")
-    //     .then((res) => console.log(res))
-    //     .catch((err) => console.log(err));
-  //};
+
+  const getPerDay = async() => {
+      await axios
+        .get(`http://localhost:8080/api/money/${curUser._id}`)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+  };
+
+  const checkLoan = async() => {
+    let res =  await axios.get(`http://localhost:8080/api/loan/istaken/${curUser._id}`);
+    let data = res.data;
+    console.log(data);
+  };
+
+  useEffect(() => {
+    checkLoan();
+    getPerDay();
+  }, []);
 
   const reminderHandler = async () => {
+    await axios
+      .post("http://localhost:8080/api/money/reminder", {
+        user_id:curUser._id,
+        reminder,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
     alert("Reminder has been set");
   };
 
@@ -82,12 +111,13 @@ const PocketBuddy = () => {
                 placeholder="Enter your Budget..."
                 className={styles.ContainerInput}
                 name="budget"
+                onChange={(e) => setBudget(e.target.value)}
               />
               <label className={styles.ContainerLabel}>Budget</label>
             </div>
             <button
               onClick={() => {
-                // changeBudget();
+                changeBudget();
                 setEditBudget(false);
               }}
               className={styles.Buttons}
@@ -102,11 +132,11 @@ const PocketBuddy = () => {
             <input
               placeholder="Enter Today's Expenditure..."
               className={styles.ContainerInput}
-              name="spent"
+              onChange={(e) => setExpenditure(e.target.value)}
             />
             <label className={styles.ContainerLabel}>Today's Expenditure</label>
           </div>
-          <button onClick={() => alert("Added")} className={styles.Buttons}>
+          <button onClick={() => dailyExp()} className={styles.Buttons}>
             Add Expense
           </button>
         </div>
@@ -115,7 +145,7 @@ const PocketBuddy = () => {
         <div className={styles.DailyBudget}>Rs. 100 per Day</div>
         <div className={styles.Reminder}>
           <label> Set Time for Reminder</label>
-          <input type="time" />
+          <input type="time" onChange={(e) => setReminder(e.target.value)}/>
           <button onClick={reminderHandler} className={styles.Buttons}>
             Set
           </button>
