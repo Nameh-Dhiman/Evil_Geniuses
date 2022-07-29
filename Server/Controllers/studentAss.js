@@ -1,5 +1,6 @@
 const studentAssModel = require("../Models/studentAss");
 const assignmentModel = require("../Models/assignment");
+const userModel = require("../Models/user");
 
 const assignmentPatcher = async (req, res) => {
   const { user_id, assignment_id, isCompleted } = req.body;
@@ -39,6 +40,10 @@ const assignmentGetter = async (req, res) => {
       .populate({
         path: "assignment_id",
         model: assignmentModel,
+        populate: {
+          path: "instructor",
+          model: userModel,
+        },
       });
     return res.send(assignments);
   } catch (err) {
