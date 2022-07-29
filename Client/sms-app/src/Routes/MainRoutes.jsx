@@ -1,13 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "../Components/Dashboard";
-import Home from "../Components/Home";
-import Signin from "../Components/Signin";
-import Signup from "../Components/Signup";
-import Assignments from "../Components/subcomponents/Assignments";
-import Grades from "../Components/subcomponents/Grades";
-import PocketBuddy from "../Components/subcomponents/PocketBuddy";
-import TalkToExpert from "../Components/subcomponents/TalkToExpert";
+import Dashboard from "../components/Dashboard";
+import Home from "../components/Home";
+import Signin from "../components/Signin";
+import Signup from "../components/Signup";
+import Assignments from "../components/subcomponents/Assignments";
+import Grades from "../components/subcomponents/Grades";
+import PocketBuddy from "../components/subcomponents/PocketBuddy";
+import TalkToExpert from "../components/subcomponents/TalkToExpert";
 
 const MainRoutes = () => {
   return (
