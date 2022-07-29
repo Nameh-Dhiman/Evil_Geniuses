@@ -2,6 +2,7 @@ import React, { useState, useRef, useContext } from "react";
 import styles from "./Auth.module.scss";
 import axios from 'axios';
 import {AuthContext} from '../Context/AuthContext';
+import {saveDataToLocal} from '../Utils/Localstorage';
 
 const Signin = () => {
   const {curUser, setCurUser, isLoggedIn, setIsLoggedIn} = useContext(AuthContext);
@@ -10,7 +11,12 @@ const Signin = () => {
   const formReset = useRef();
 
   const signin = async() => {
-    await axios.post("http://localhost:8080/api/auth/signin", formData).then((res) => console.log(res)).catch(err => console.log(err));
+    await axios.post("http://localhost:8080/api/auth/signin", formData).then((res) => {
+      let data = res.data;
+      setCurUser({...data});
+      saveDataToLocal('user', data);
+      saveDataToLocal('userId', data._id);
+    }).catch(err => console.log(err));
   }
 
   const submitHandler = (e) => {
@@ -36,12 +42,14 @@ const Signin = () => {
             placeholder="Enter your email.."
             className={styles.ContainerInput}
             name="email"
+            type="email"
             onChange={changeHandler}
           />
           <label className={styles.ContainerLabel}>Email</label>
         </div>
         <div className={styles.InputContainer}>
           <input
+            type="password"
             placeholder="Enter your password.."
             className={styles.ContainerInput}
             name="password"
