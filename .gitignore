@@ -21,3 +21,5 @@
 /Client/sms-app/yarn-error.log*
 
 /Server/node_modules
+
+/socket/node_modules
