@@ -13,29 +13,10 @@ import {
 ChartJS.register(RadialLinearScale, LineElement,ArcElement, PointElement, Tooltip, Legend);
 
 const labels = ["DSA", "Coding", "CSBT"];
-// export const data = {
-//   labels,
-//   datasets: [
-//     {
-//       labels: labels,
-//       data: [2, 4, 5, 6, 3, 8],
-//       backgroundColor: [
-//         "rgba(255, 99, 132, 0.5)",
-//         "rgba(54, 162, 235, 0.5)",
-//         "rgba(255, 206, 86, 0.5)",
-//       ],
-//       borderWidth: 1,
-//     },
-//   ],
-// };
 
 export const options = {
   responsive: true,
   maintainAspectRatio: true,
-  title:{
-    display:true,
-    text:"Hello!",
-  },
   scales: {
     r: {
       max: 10,
@@ -51,19 +32,17 @@ export const options = {
   },
 };
 
-const Chart = () => {
-
-  
+const Chart = ({gradesData}) => {
 
   const data = {
     labels,
     datasets: [
       {
         labels: labels,
-        data: [2, 4, 5, 6, 3, 8],
+        data: gradesData,
         backgroundColor: [
-          "rgba(255, 99, 132, 0.5)",
           "rgba(54, 162, 235, 0.5)",
+          "rgba(255, 99, 132, 0.5)",
           "rgba(255, 206, 86, 0.5)",
         ],
         borderWidth: 1,

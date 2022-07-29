@@ -1,0 +1,34 @@
+.Container {
+  width: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  & .PageTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: #9d9d9e;
+  }
+
+  & .StudentInfo {
+    display: grid;
+    width:90%;
+    grid-template-columns: 60% 40%;
+
+    & .Student,
+    & .Unit {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #888888;
+      margin: 0 2rem;
+      text-transform: capitalize;
+    }
+
+    & .Chart {
+      width: 85%;
+    }
+  }
+}
