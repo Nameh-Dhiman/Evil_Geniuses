@@ -61,4 +61,20 @@ const postingLoan = async (req, res) => {
   }
 };
 
-module.exports = { postingLoan };
+const isTakenLoan = async (req, res) => {
+  const { student_id } = req.params;
+  try {
+    const isExist = await loanModel.findOne({
+      student_id: student_id,
+    });
+
+    if (isExist) {
+      return res.send({ isTaken: true });
+    }
+    return res.send({ isTaken: false });
+  } catch (err) {
+    return res.sendStatus(404);
+  }
+};
+
+module.exports = { postingLoan, isTakenLoan };
