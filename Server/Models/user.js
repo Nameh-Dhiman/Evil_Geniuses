@@ -18,6 +18,31 @@ const userSchema = new Schema(
       required: false,
       default: Math.floor(Math.random() * (6 - 1 + 1)) + 1,
     },
+    marks: {
+      type: {
+        DSA: {
+          type: Number,
+          required: false,
+          default: Math.floor(Math.random() * (10 - 1 + 1)) + 1,
+        },
+        Coding: {
+          type: Number,
+          required: false,
+          default: Math.floor(Math.random() * (10 - 1 + 1)) + 1,
+        },
+        CSBT: {
+          type: Number,
+          required: false,
+          default: Math.floor(Math.random() * (10 - 1 + 1)) + 1,
+        },
+      },
+      required: false,
+      default: {
+        DSA: Math.floor(Math.random() * (10 - 1 + 1)) + 1,
+        Coding: Math.floor(Math.random() * (10 - 1 + 1)) + 1,
+        CSBT: Math.floor(Math.random() * (10 - 1 + 1)) + 1,
+      },
+    },
   },
   {
     timestamps: true,
