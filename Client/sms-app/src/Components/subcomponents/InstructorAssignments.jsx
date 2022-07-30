@@ -1,18 +1,21 @@
 import axios from "axios";
 import React, { useRef, useContext } from "react";
 import { useState } from "react";
-import {AuthContext} from "../../Context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
 import styles from "./InstructorAssignments.module.scss";
 
 const InstructorAssignments = () => {
   const [formData, setFormData] = useState({});
   const form = useRef();
 
-  const {curUser} = useContext(AuthContext);
+  const { curUser } = useContext(AuthContext);
 
   const createAssignment = async () => {
     await axios
-      .post(`http://localhost:8080/api/assignments`, {...formData, instructor: curUser._id})
+      .post(`http://localhost:8080/api/assignments`, {
+        ...formData,
+        instructor: curUser._id,
+      })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -54,7 +57,7 @@ const InstructorAssignments = () => {
         <form onSubmit={submitHandler} ref={form}>
           <div className={styles.InputContainer}>
             <input
-              placeholder="Enter your Assignment Title..."
+              placeholder="Enter Assignment Title..."
               className={styles.ContainerInput}
               name="name"
               onChange={changeHandler}
