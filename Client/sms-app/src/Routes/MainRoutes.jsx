@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
 import Dashboard from "../Components/Dashboard";
 import InstructorDashboard from "../Components/InstructorDashboard";
 import Home from "../Components/Home";
