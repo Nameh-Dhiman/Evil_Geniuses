@@ -1,17 +1,17 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Dashboard from "../Components/Dashboard";
-import InstructorDashboard from "../Components/InstructorDashboard";
-import Home from "../Components/Home";
-import Signin from "../Components/Signin";
-import Signup from "../Components/Signup";
-import Assignments from "../Components/subcomponents/Assignments";
-import InstructorAssignments from "../Components/subcomponents/InstructorAssignments";
-import Grades from "../Components/subcomponents/Grades";
-import PocketBuddy from "../Components/subcomponents/PocketBuddy";
-import TalkToExpert from "../Components/subcomponents/TalkToExpert";
-import TalkToStudent from "../Components/subcomponents/TalkToStudent";
+import Dashboard from "../components/Dashboard";
+import InstructorDashboard from "../components/InstructorDashboard";
+import Home from "../components/Home";
+import Signin from "../components/Signin";
+import Signup from "../components/Signup";
+import Assignments from "../components/subcomponents/Assignments";
+import InstructorAssignments from "../components/subcomponents/InstructorAssignments";
+import Grades from "../components/subcomponents/Grades";
+import PocketBuddy from "../components/subcomponents/PocketBuddy";
+import TalkToExpert from "../components/subcomponents/TalkToExpert";
+import TalkToStudent from "../components/subcomponents/TalkToStudent";
 
 import { RequireStudentAuth } from "./RequireStudentAuth";
 import { RequireInstructorAuth } from "./RequireInstructorAuth";

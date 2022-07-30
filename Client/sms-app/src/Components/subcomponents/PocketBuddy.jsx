@@ -43,7 +43,7 @@ const PocketBuddy = () => {
     alert("Budget Updated!");
     await axios
       .post("http://localhost:8080/api/money/budget", {user_id:curUser._id, budget:parseInt(budget)})
-      .then((res) => console.log(res))
+      .then((res) => {getPerDay();})
       .catch((err) => console.log(err));
   };
 
@@ -56,6 +56,7 @@ const PocketBuddy = () => {
       })
       .then((res) => {
         setExpenditure("");
+        getPerDay();
       })
       .catch((err) => console.log(err));
   };
@@ -97,7 +98,7 @@ const PocketBuddy = () => {
         <p className={styles.PageTitle} style={{ fontSize: "1.2rem" }}>
           Manage your Expenses
         </p>
-        <div>Budget: ₹{curBudget} </div>
+        <div className={styles.CurBudget}>Original Budget: ₹{curBudget} </div>
         {!editBudget ? (
           <div className={styles.EditBudget}>
             <button
