@@ -52,7 +52,11 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
             <div className="chatOnlineImgContainer">
               <img
                 className="chatOnlineImg"
-                src="https://st.depositphotos.com/1779253/5140/v/450/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg"
+                src={
+                  c.avatar
+                    ? c.avatar
+                    : "https://st.depositphotos.com/1779253/5140/v/450/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg"
+                }
                 alt=""
               />
               <div className="chatOnlineBadge"></div>
@@ -73,7 +77,11 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
             <div className="chatOnlineImgContainer">
               <img
                 className="chatOnlineImg"
-                src="https://st.depositphotos.com/1779253/5140/v/450/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg"
+                src={
+                  c.avatar
+                    ? c.avatar
+                    : "https://st.depositphotos.com/1779253/5140/v/450/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg"
+                }
                 alt=""
               />
               {/* <div className="chatOnlineBadge"></div> */}

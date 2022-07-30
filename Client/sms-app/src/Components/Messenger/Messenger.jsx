@@ -117,6 +117,8 @@ export default function Messenger() {
                   return (
                     <div ref={scrollRef}>
                       <Message
+                        conversation={currentChat}
+                        currentUser={user}
                         key={m._id}
                         message={m}
                         own={m.sender === user._id}
