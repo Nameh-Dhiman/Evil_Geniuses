@@ -6,7 +6,7 @@ import {saveDataToLocal} from '../Utils/Localstorage';
 import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
-  const {setCurUser} = useContext(AuthContext);
+  const {setCurUser, setIsLoggedIn} = useContext(AuthContext);
 
   const navigate = useNavigate();
   // let location = useLocation();
@@ -19,6 +19,7 @@ const Signin = () => {
     await axios.post("http://localhost:8080/api/auth/signin", formData).then((res) => {
       let data = res.data;
       setCurUser({...data});
+      setIsLoggedIn(true);
       saveDataToLocal('user', data);
       saveDataToLocal('userId', data._id);
       setTimeout(() => {
