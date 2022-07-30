@@ -11,6 +11,7 @@ import InstructorAssignments from "../components/subcomponents/InstructorAssignm
 import Grades from "../components/subcomponents/Grades";
 import PocketBuddy from "../components/subcomponents/PocketBuddy";
 import TalkToExpert from "../components/subcomponents/TalkToExpert";
+import TalkToStudent from "../components/subcomponents/TalkToStudent";
 
 import { RequireStudentAuth } from "./RequireStudentAuth";
 import { RequireInstructorAuth } from "./RequireInstructorAuth";
@@ -47,6 +48,7 @@ const MainRoutes = () => {
             path="postassignments"
             element={<InstructorAssignments />}
           ></Route>
+          <Route path="talkToStudent" element={<TalkToStudent />}></Route>
         </Route>
       </Routes>
     </>

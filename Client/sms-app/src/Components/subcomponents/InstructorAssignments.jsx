@@ -54,12 +54,12 @@ const InstructorAssignments = () => {
         <form onSubmit={submitHandler} ref={form}>
           <div className={styles.InputContainer}>
             <input
-              placeholder="Enter your Bank Name..."
+              placeholder="Enter your Assignment Title..."
               className={styles.ContainerInput}
               name="name"
               onChange={changeHandler}
             />
-            <label className={styles.ContainerLabel}>Bank Name</label>
+            <label className={styles.ContainerLabel}>Assignment Title</label>
           </div>
           <div className={styles.SelectInputs}>
             <select name="topic" onChange={changeHandler}>
