@@ -16,7 +16,11 @@ export default function Conversations({ conversation, currentUser }) {
     <div className="conversation">
       <img
         className="conversationImg"
-        src="https://st.depositphotos.com/1779253/5140/v/450/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg"
+        src={
+          user.avatar
+            ? user.avatar
+            : "https://st.depositphotos.com/1779253/5140/v/450/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg"
+        }
       />
       <span className="convsersationName">{user.name}</span>
     </div>
