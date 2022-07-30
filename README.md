@@ -17,11 +17,11 @@ Student and Instructor Portal with, Live Chat with Instructor, Grades Infographi
 
 ## Features
 
-- Login and SignIn facility for the students.
-- Detailed grades of the students with infographics and take loan feature.
+- Login and SignIn facility for the Students and Instructors.
+- Detailed grades of the students with infographics.
 - Chat feature with the instructors for the students.
-- Pocket Buddy(Manage your monthly expenses and take loan from the organisation in case of need).
-- Personal user Dashboard(Different for student and Instructor).
+- Pocket Buddy (Manage your monthly expenses and take loan from the organisation in case of need).
+- Personal user Dashboard (Different for student and Instructor).
 
 
 ## Team
