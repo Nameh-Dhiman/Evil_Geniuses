@@ -70,6 +70,15 @@ const Signin = () => {
         </div>
         <input type="submit" value="Submit" className={styles.Submit} />
       </form>
+      <p className={styles.PageTitle} style={{ fontSize: "1rem" }}>
+        Not already a user?{" "}
+        <span
+          onClick={() => navigate("/signup")}
+          style={{ color: "#308dfd", cursor: "pointer" }}
+        >
+          Signup
+        </span>
+      </p>
     </div>
   );
 };

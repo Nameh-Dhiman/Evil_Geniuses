@@ -1,8 +1,10 @@
 import React, { useState, useRef } from "react";
 import styles from "./Auth.module.scss";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const formReset = useRef();
 
@@ -80,6 +82,12 @@ const Signup = () => {
         </div>
         <input type="submit" value="Register" className={styles.Submit} />
       </form>
+      <p className={styles.PageTitle} style={{ fontSize: "1rem" }}>
+        Already a user?{" "}
+        <span onClick={() => navigate("/signin")} style={{ color: "#308dfd", cursor:"pointer" }}>
+          Signin
+        </span>
+      </p>
     </div>
   );
 };
