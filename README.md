@@ -9,13 +9,18 @@ Student and Instructor Portal with, Live Chat with Instructor, Grades Infographi
 * Express.js
 * Javascript
 * CSS
+* SASS
 * GitHub
+* ChartJs
+* NodeMailer
+* Socket.io
 
 ## Features
 
 - Login and SignIn facility for the students.
-- Detailed grades of the students with brilliant UI and take loan feature.
+- Detailed grades of the students with infographics and take loan feature.
 - Chat feature with the instructors for the students.
+- Pocket Buddy(Manage your monthly expenses and take loan from the organisation in case of need).
 - Personal user Dashboard(Different for student and Instructor).
 
 
