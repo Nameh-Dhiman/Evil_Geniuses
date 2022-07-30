@@ -1,9 +1,11 @@
-import React from 'react';
-
+import React from "react";
+import Messenger from "../Messenger/Messenger";
 const TalkToStudent = () => {
   return (
-    <div>TalkToStudent</div>
-  )
-}
+    <div>
+      <Messenger />
+    </div>
+  );
+};
 
-export default TalkToStudent
+export default TalkToStudent;
