@@ -7,6 +7,7 @@ import Home from "../components/Home";
 import Signin from "../components/Signin";
 import Signup from "../components/Signup";
 import Assignments from "../components/subcomponents/Assignments";
+import Pomodoro from "../components/Pomodoro/Pomodoro";
 import InstructorAssignments from "../components/subcomponents/InstructorAssignments";
 import Grades from "../components/subcomponents/Grades";
 import PocketBuddy from "../components/subcomponents/PocketBuddy";
@@ -35,6 +36,7 @@ const MainRoutes = () => {
           <Route path="assignments" element={<Assignments />}></Route>
           <Route path="pocketbuddy" element={<PocketBuddy />}></Route>
           <Route path="talkToExpert" element={<TalkToExpert />}></Route>
+          <Route path="productivity" element={<Pomodoro/>}></Route>
         </Route>
         <Route
           path="/instructordashboard/*"

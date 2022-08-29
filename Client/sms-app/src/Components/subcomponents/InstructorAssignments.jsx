@@ -12,7 +12,7 @@ const InstructorAssignments = () => {
 
   const createAssignment = async () => {
     await axios
-      .post(`http://localhost:8080/api/assignments`, {
+      .post(`https://execelligent.herokuapp.com/api/assignments`, {
         ...formData,
         instructor: curUser._id,
       })

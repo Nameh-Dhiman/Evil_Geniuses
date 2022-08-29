@@ -10,7 +10,7 @@ const Signup = () => {
 
   const register = async () => {
     await axios
-      .post("http://localhost:8080/api/auth/signup", formData)
+      .post("https://execelligent.herokuapp.com/api/auth/signup", formData)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -84,7 +84,10 @@ const Signup = () => {
       </form>
       <p className={styles.PageTitle} style={{ fontSize: "1rem" }}>
         Already a user?{" "}
-        <span onClick={() => navigate("/signin")} style={{ color: "#308dfd", cursor:"pointer" }}>
+        <span
+          onClick={() => navigate("/signin")}
+          style={{ color: "#308dfd", cursor: "pointer" }}
+        >
           Signin
         </span>
       </p>

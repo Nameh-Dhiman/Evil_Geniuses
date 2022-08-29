@@ -6,7 +6,9 @@ export default function Conversations({ conversation, currentUser }) {
   useEffect(() => {
     const friendId = conversation.members.find((m) => m !== currentUser._id);
     const getUser = async () => {
-      const res = await fetch(`http://localhost:8080/api/users/${friendId}`);
+      const res = await fetch(
+        `https://execelligent.herokuapp.com/api/users/${friendId}`
+      );
       const data = await res.json();
       setUser({ ...data });
     };

@@ -12,6 +12,7 @@ const Dashboard = () => {
     assignments: false,
     pocketbuddy: false,
     talkToExpert: false,
+    productivity: false,
   });
 
   useEffect(() => {
@@ -39,6 +40,12 @@ const Dashboard = () => {
         talkToExpert: true,
       });
     }
+    else if (curLocation === "/dashboard/productivity") {
+      setActive({
+        ...active,
+        productivity: true,
+      });
+    }
   }, []);
 
   return (
@@ -57,6 +64,7 @@ const Dashboard = () => {
               assignments: false,
               pocketbuddy: false,
               talkToExpert: false,
+              productivity: false,
             });
           }}
         >
@@ -87,6 +95,7 @@ const Dashboard = () => {
               assignments: true,
               pocketbuddy: false,
               talkToExpert: false,
+              productivity: false,
             });
             navigate("/dashboard/assignments");
           }}
@@ -122,6 +131,7 @@ const Dashboard = () => {
               assignments: false,
               pocketbuddy: true,
               talkToExpert: false,
+              productivity: false,
             });
             navigate("/dashboard/pocketbuddy");
           }}
@@ -158,6 +168,7 @@ const Dashboard = () => {
               assignments: false,
               pocketbuddy: false,
               talkToExpert: true,
+              productivity: false,
             });
             navigate("/dashboard/talkToExpert");
           }}
@@ -176,6 +187,38 @@ const Dashboard = () => {
             </svg>
           </div>
           <div>Talk to Expert</div>
+        </div>
+        <div
+          className={
+            !active.productivity
+              ? `${styles.SideNav_Item}`
+              : `${styles.SideNav_Item} ${styles.SideNavItemActive}`
+          }
+          onClick={() => {
+            setActive({
+              grades: false,
+              assignments: false,
+              pocketbuddy: false,
+              talkToExpert: false,
+              productivity:true,
+            });
+            navigate("/dashboard/productivity");
+          }}
+        >
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-stopwatch"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z" />
+              <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z" />
+            </svg>
+          </div>
+          <div>Productivity</div>
         </div>
       </div>
       <div className={styles.Display}>

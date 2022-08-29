@@ -39,7 +39,9 @@ export default function Messenger() {
 
   useEffect(() => {
     const getConversations = async () => {
-      const res = await fetch(`http://localhost:8080/conversation/${user._id}`);
+      const res = await fetch(
+        `https://execelligent.herokuapp.com/conversation/${user._id}`
+      );
       const data = await res.json();
       console.log(data);
       setConversations([...data]);
@@ -49,7 +51,7 @@ export default function Messenger() {
   useEffect(() => {
     const getMessage = async () => {
       const res = await fetch(
-        `http://localhost:8080/messages/${currentChat._id}`
+        `https://execelligent.herokuapp.com/messages/${currentChat._id}`
       );
       const data = await res.json();
       setMessages([...data]);
@@ -74,7 +76,7 @@ export default function Messenger() {
     });
 
     try {
-      const res = fetch("http://localhost:8080/messages", {
+      const res = fetch("https://execelligent.herokuapp.com/messages", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

@@ -1,19 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import Chart from './Chart';
-import {AuthContext} from "../../Context/AuthContext";
+import Chart from "./Chart";
+import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
 import styles from "./Grades.module.scss";
 
 const Grades = () => {
-  const {curUser} = useContext(AuthContext);
+  const { curUser } = useContext(AuthContext);
   const [gradesData, setGradesData] = useState([]);
 
-  const getGrades = async() => {
-    let res = await axios.get(`http://localhost:8080/api/users/${curUser._id}`);
+  const getGrades = async () => {
+    let res = await axios.get(
+      `https://execelligent.herokuapp.com/api/users/${curUser._id}`
+    );
     let marks = res.data.marks;
-    let marksArr=[];
-    for(let el in marks){
-      if(typeof(marks[el]) == "number"){
+    let marksArr = [];
+    for (let el in marks) {
+      if (typeof marks[el] == "number") {
         marksArr.push(marks[el]);
       }
     }
@@ -38,6 +40,6 @@ const Grades = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Grades
+export default Grades;

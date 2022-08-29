@@ -2,12 +2,11 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import styles from "./PocketBuddy.module.scss";
-import {AuthContext}  from "../../Context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
 import { useContext } from "react";
 
 const PocketBuddy = () => {
-  const {curUser} = useContext(AuthContext);
-
+  const { curUser } = useContext(AuthContext);
 
   const [editBudget, setEditBudget] = useState(false);
   const [bank, setBank] = useState(false);
@@ -24,9 +23,17 @@ const PocketBuddy = () => {
   const [formData, setFormData] = useState({});
   const form = useRef();
 
-  const submitHandler  = async(e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:8080/api/loan/approve`, {student_id:curUser._id, ...formData}).then((res) => {console.log(res)}).catch((err) => console.log(err));
+    await axios
+      .post(`https://execelligent.herokuapp.com/api/loan/approve`, {
+        student_id: curUser._id,
+        ...formData,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
     form.current.reset();
   };
 
@@ -38,19 +45,22 @@ const PocketBuddy = () => {
     });
   };
 
-
   const changeBudget = async () => {
     alert("Budget Updated!");
     await axios
-      .post("http://localhost:8080/api/money/budget", {user_id:curUser._id, budget:parseInt(budget)})
-      .then((res) => {getPerDay();})
+      .post("https://execelligent.herokuapp.com/api/money/budget", {
+        user_id: curUser._id,
+        budget: parseInt(budget),
+      })
+      .then((res) => {
+        getPerDay();
+      })
       .catch((err) => console.log(err));
   };
 
-
   const dailyExp = async () => {
     await axios
-      .post("http://localhost:8080/api/money/reduce", {
+      .post("https://execelligent.herokuapp.com/api/money/reduce", {
         user_id: curUser._id,
         value: parseInt(expenditure),
       })
@@ -61,16 +71,21 @@ const PocketBuddy = () => {
       .catch((err) => console.log(err));
   };
 
-
-  const getPerDay = async() => {
-      await axios
-        .get(`http://localhost:8080/api/money/${curUser._id}`)
-        .then((res) => {setPerDay(res.data.budgetPerDay); setBalance(res.data.balance); setCurBudget(res.data.budget);})
-        .catch((err) => console.log(err));
+  const getPerDay = async () => {
+    await axios
+      .get(`https://execelligent.herokuapp.com/api/money/${curUser._id}`)
+      .then((res) => {
+        setPerDay(res.data.budgetPerDay);
+        setBalance(res.data.balance);
+        setCurBudget(res.data.budget);
+      })
+      .catch((err) => console.log(err));
   };
 
-  const checkLoan = async() => {
-    let res =  await axios.get(`http://localhost:8080/api/loan/istaken/${curUser._id}`);
+  const checkLoan = async () => {
+    let res = await axios.get(
+      `https://execelligent.herokuapp.com/api/loan/istaken/${curUser._id}`
+    );
     let data = res.data.isTaken;
     setPermitLoan(data);
   };
@@ -82,8 +97,8 @@ const PocketBuddy = () => {
 
   const reminderHandler = async () => {
     await axios
-      .post("http://localhost:8080/api/money/reminder", {
-        user_id:curUser._id,
+      .post("https://execelligent.herokuapp.com/api/money/reminder", {
+        user_id: curUser._id,
         reminder,
       })
       .then((res) => console.log(res))

@@ -6,7 +6,9 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   const [offlineUsers, setOfflineUsers] = useState([]);
   useEffect(() => {
     const getAllUsers = async () => {
-      let res = await fetch("http://localhost:8080/api/users/instructors");
+      let res = await fetch(
+        "https://execelligent.herokuapp.com/api/users/instructors"
+      );
       let data = await res.json();
       console.log(data);
       let curr = onlineUsers.filter((user) => user.userId !== currentId);
@@ -30,7 +32,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   const handelClick = async (user) => {
     try {
       let res = await fetch(
-        `http://localhost:8080/conversation/find/${currentId}/${user._id}`
+        `https://execelligent.herokuapp.com/conversation/find/${currentId}/${user._id}`
       );
       let data = await res.json();
       setCurrentChat(data);

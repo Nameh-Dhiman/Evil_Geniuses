@@ -1,34 +1,37 @@
 import React, { useState, useRef, useContext } from "react";
 import styles from "./Auth.module.scss";
-import axios from 'axios';
-import {AuthContext} from '../Context/AuthContext';
-import {saveDataToLocal} from '../Utils/Localstorage';
+import axios from "axios";
+import { AuthContext } from "../Context/AuthContext";
+import { saveDataToLocal } from "../Utils/Localstorage";
 import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
-  const {setCurUser, setIsLoggedIn} = useContext(AuthContext);
+  const { setCurUser, setIsLoggedIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
   // let location = useLocation();
   // let from = location.state?.from?.pathname || "/";
-  
+
   const [formData, setFormData] = useState({});
   const formReset = useRef();
 
-  const signin = async() => {
-    await axios.post("http://localhost:8080/api/auth/signin", formData).then((res) => {
-      let data = res.data;
-      setCurUser({...data});
-      setIsLoggedIn(true);
-      saveDataToLocal('user', data);
-      saveDataToLocal('userId', data._id);
-      setTimeout(() => {
-        if(data.role === 'student') navigate('/dashboard');
-        else if(data.role === 'instructor') navigate('/instructordashboard');
-        // navigate(from, { replace: true });
-      }, 100);
-    }).catch(err => console.log(err));
-  }
+  const signin = async () => {
+    await axios
+      .post("https://execelligent.herokuapp.com/api/auth/signin", formData)
+      .then((res) => {
+        let data = res.data;
+        setCurUser({ ...data });
+        setIsLoggedIn(true);
+        saveDataToLocal("user", data);
+        saveDataToLocal("userId", data._id);
+        setTimeout(() => {
+          if (data.role === "student") navigate("/dashboard");
+          else if (data.role === "instructor") navigate("/instructordashboard");
+          // navigate(from, { replace: true });
+        }, 100);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();

@@ -14,7 +14,7 @@ const Assignments = () => {
 
   const getAssignments = async () => {
     await axios
-      .get(`http://localhost:8080/api/studentass/${curUser._id}`)
+      .get(`https://execelligent.herokuapp.com/api/studentass/${curUser._id}`)
       .then((res) => setAssign([...res.data]))
       .catch((err) => console.log(err));
   };
@@ -22,24 +22,27 @@ const Assignments = () => {
   const getProgress = async () => {
     await axios
       .get(
-        `http://localhost:8080/api/studentass/count/${curUser._id}`
+        `https://execelligent.herokuapp.com/api/studentass/count/${curUser._id}`
       )
       .then((res) => {
-        let {total, completed} = res.data;
-        let percentage = Math.floor((completed/total) * 100);
+        let { total, completed } = res.data;
+        let percentage = Math.floor((completed / total) * 100);
         setProgress(percentage);
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   const changeHandler = async (id, completed) => {
     await axios
-      .patch(`http://localhost:8080/api/studentass/iscompleted`, {
+      .patch(`https://execelligent.herokuapp.com/api/studentass/iscompleted`, {
         user_id: curUser._id,
         assignment_id: id,
         isCompleted: completed,
       })
-      .then((res) => { getAssignments(); getProgress();})
+      .then((res) => {
+        getAssignments();
+        getProgress();
+      })
       .catch((err) => console.log(err));
   };
 
