@@ -56,6 +56,7 @@ This project was built by 3 developers over the duration of 3 days.
 
 ## Team
 
+- Nameh Dhiman
 - Dishant Rana
 - Nandkishor Dumare
-- Nameh Dhiman
+
