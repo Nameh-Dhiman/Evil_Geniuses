@@ -1,5 +1,13 @@
 # Excelligent
-Student and Instructor Portal with, Live Chat with Instructor, Grades Infographics and Assignment Management and a PocketBuddy to Manage expenses and take loan. from the Institution.
+
+<p>
+This was a collaborative hackathon group project at Masai School. 
+The goal behind this project was to build a
+Student and Instructor Portal with the following features, Live Student & Instructor Chat, Grades Infographics, Assignments, Productivity, and a PocketBuddy to Manage expenses and take a loan from the Institution if needed. 
+<br/>
+This project was built by 3 developers over the duration of 3 days.
+</p>
+
 
 * [Click here](https://excelligent.vercel.app/) to view our project.
 
