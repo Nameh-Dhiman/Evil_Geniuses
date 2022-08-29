@@ -1,4 +1,4 @@
-# Evil_Geniuses
+# Excelligent
 Student and Instructor Portal with, Live Chat with Instructor, Grades Infographics and Assignment Management and a PocketBuddy to Manage expenses and take loan. from the Institution.
   * [Click here](https://excelligent.vercel.app/) to view our project.
 
